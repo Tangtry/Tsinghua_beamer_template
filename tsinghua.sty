@@ -1,0 +1,113 @@
+% Created by troy tang @try94thebest@hotmail.com
+% a night in March 2019 (when I am supposed to read papers instead of modifying these shits.)
+
+\mode<presentation>
+
+\usepackage{graphicx}
+
+
+\newcommand{\frameofframes}{/}
+
+
+\makeatletter
+
+% Color
+\xdefinecolor{tsinghua}{rgb}{0.455,0.204,0.506}  %RGB#82318E
+\setbeamercolor{frametitle}{bg=tsinghua!80!white,fg=white}
+\setbeamercolor{title}{fg=white,bg=tsinghua}
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{alerted text}{fg=red}
+\setbeamercolor{example text}{fg=green!50!black}
+
+\setbeamercolor{structure}{fg=white}
+\setbeamercolor{palette quaternary}{bg = tsinghua}
+\setbeamercolor{title in head/foot}{bg = tsinghua, fg = white}
+\setbeamercolor{section in head/foot}{bg = tsinghua, fg = white}
+\setbeamercolor{author in head/foot}{bg = tsinghua!80!white, fg = white}
+\setbeamercolor{number in head/foot}{bg = tsinghua!80!black, fg = white}
+\setbeamercolor{title page header}{bg = tsinghua, fg = white}
+
+% Item bullet color and shape
+\setbeamertemplate{itemize items}{\color{tsinghua}$\blacksquare$}
+\setbeamertemplate{enumerate items}{\color{tsinghua}$\blacktriangleright$}
+
+% Navigation hide
+\setbeamertemplate{navigation symbols}{}
+
+% Headline style
+\defbeamertemplate*{headline}{my headline}
+{
+  \ifnum \insertpagenumber=1
+  {}
+  \else
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{palette quaternary}%
+    \insertsectionnavigationhorizontal{\paperwidth}{}{\hfill \hfill}
+    \end{beamercolorbox}%
+  }
+\fi
+}
+\setbeamertemplate{headline}[my headline]
+
+% Frametitle style
+\setbeamertemplate{frametitle}{
+\vskip 0.7 ex
+\hbox{%
+\begin{beamercolorbox}[wd=\paperwidth,ht=2ex,dp=1.5ex]{frametitle}%
+  \raggedright\hspace*{0.8em}\small\insertframetitle
+\end{beamercolorbox}
+}%
+}
+
+
+% Footline style
+\defbeamertemplate*{footline}{my footline}
+{
+    \ifnum \insertpagenumber=1
+    \hbox{%
+      \begin{beamercolorbox}[wd=\paperwidth,ht=2ex,dp=1.125ex]{}%
+      \end{beamercolorbox}
+      }%
+      \vskip0pt%
+    \else
+    \leavevmode%
+    \hbox{%
+      \begin{beamercolorbox}[wd = 0.2\paperwidth, ht=2.5ex,dp=1.125ex]{author in head/foot} \hspace*{0.5em} \insertshortauthor
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd =0.7\paperwidth, ht=2.5ex,dp=1.125ex, center]{title in head/foot} \insertshorttitle
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd =0.1\paperwidth, ht=2.5ex,dp=1.125ex]{number in head/foot} \hfill \insertframenumber~\frameofframes~\inserttotalframenumber \hspace*{0.5em}
+      \end{beamercolorbox}%
+      }
+      \vskip0pt%
+    \fi
+}
+\setbeamertemplate{footline}[my footline]
+
+
+% Title page
+\defbeamertemplate*{title page}{texsx}[1][]
+{%
+    \begin{beamercolorbox}[wd=0.95\paperwidth,leftskip=3cm,sep=8pt,#1]{title page header}
+      \huge \inserttitle\par%
+    \end{beamercolorbox}%
+    \vskip0.75cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{author}
+      \usebeamerfont{author}\insertauthor%
+    \end{beamercolorbox}
+     \vskip0.2cm%
+     \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{institue}
+       \usebeamerfont{author}\insertinstitute%
+     \end{beamercolorbox}
+     \vskip0.2cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{date}
+      \usebeamerfont{author}\insertdate%
+    \end{beamercolorbox}
+    \begin{figure}[htpb]
+      \hspace{0.5 \paperwidth} \includegraphics[width=0.15\linewidth]{Tsinghua_University_Logo.eps}
+    \end{figure}
+  \vfill
+}\addtocounter{framenumber}{-1}
+
+\makeatother
