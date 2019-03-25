@@ -4,7 +4,7 @@
 \mode<presentation>
 
 \usepackage{graphicx}
-
+\usepackage{tikz}
 
 \newcommand{\frameofframes}{/}
 
@@ -21,10 +21,10 @@
 
 \setbeamercolor{structure}{fg=white}
 \setbeamercolor{palette quaternary}{bg = tsinghua}
-\setbeamercolor{title in head/foot}{bg = tsinghua, fg = white}
+\setbeamercolor{title in head/foot}{bg = tsinghua!80!white, fg = white}
 \setbeamercolor{section in head/foot}{bg = tsinghua, fg = white}
-\setbeamercolor{author in head/foot}{bg = tsinghua!80!white, fg = white}
-\setbeamercolor{number in head/foot}{bg = tsinghua!80!black, fg = white}
+\setbeamercolor{author in head/foot}{bg = tsinghua, fg = white}
+\setbeamercolor{number in head/foot}{bg = tsinghua!80!white, fg = white}
 \setbeamercolor{title page header}{bg = tsinghua, fg = white}
 
 % Item bullet color and shape
@@ -75,10 +75,10 @@
     \hbox{%
       \begin{beamercolorbox}[wd = 0.2\paperwidth, ht=2.5ex,dp=1.125ex]{author in head/foot} \hspace*{0.5em} \insertshortauthor
       \end{beamercolorbox}%
-      \begin{beamercolorbox}[wd =0.7\paperwidth, ht=2.5ex,dp=1.125ex, center]{title in head/foot} \insertshorttitle
+      \begin{beamercolorbox}[wd =0.8\paperwidth, ht=2.5ex,dp=1.125ex]{title in head/foot} \hspace*{1.5em} \insertshorttitle \hfill \insertframenumber~\frameofframes~\inserttotalframenumber \hspace*{0.5em}
       \end{beamercolorbox}%
-      \begin{beamercolorbox}[wd =0.1\paperwidth, ht=2.5ex,dp=1.125ex]{number in head/foot} \hfill \insertframenumber~\frameofframes~\inserttotalframenumber \hspace*{0.5em}
-      \end{beamercolorbox}%
+      % \begin{beamercolorbox}[wd =0.1\paperwidth, ht=2.5ex,dp=1.125ex]{number in head/foot} \hfill \insertframenumber~\frameofframes~\inserttotalframenumber \hspace*{0.5em}
+      % \end{beamercolorbox}%
       }
       \vskip0pt%
     \fi
@@ -104,9 +104,12 @@
     \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{date}
       \usebeamerfont{author}\insertdate%
     \end{beamercolorbox}
-    \begin{figure}[htpb]
-      \hspace{0.5 \paperwidth} \includegraphics[width=0.15\linewidth]{Tsinghua_University_Logo.eps}
-    \end{figure}
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[xshift=-2cm,yshift=2cm,opacity=0.3] at (current page.south east) {\includegraphics[width = 0.6\textwidth]{Tsinghua_University_Logo.eps}};
+    \end{tikzpicture}
+    % \begin{figure}[htpb]
+    %   \hspace{0.5 \paperwidth} \includegraphics[width=0.15\linewidth]{Tsinghua_University_Logo.eps}
+    % \end{figure}
   \vfill
 }\addtocounter{framenumber}{-1}
 
