@@ -1,10 +1,14 @@
 % Created by troy tang @try94thebest@hotmail.com
 % a night in March 2019 (when I am supposed to read papers instead of modifying these shits.)
+% updated at 09/29/2019  add theorems style using block
+% updated at 05/08/2020 add table of content style control
 
 \mode<presentation>
 
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{amsthm}
+\setbeamertemplate{theorems}[numbered]
 
 \newcommand{\frameofframes}{/}
 
@@ -26,10 +30,15 @@
 \setbeamercolor{author in head/foot}{bg = tsinghua, fg = white}
 \setbeamercolor{number in head/foot}{bg = tsinghua!80!white, fg = white}
 \setbeamercolor{title page header}{bg = tsinghua, fg = white}
+\setbeamercolor{block body}{bg = tsinghua!20!white, fg = black}
+\setbeamercolor{block title}{bg =tsinghua!80!white, fg = white}
+\setbeamercolor{section in toc}{fg=black}
 
 % Item bullet color and shape
-\setbeamertemplate{itemize items}{\color{tsinghua}$\blacksquare$}
-\setbeamertemplate{enumerate items}{\color{tsinghua}$\blacktriangleright$}
+\setbeamercolor{itemize item}{fg = tsinghua}
+\setbeamertemplate{itemize items}[circle] %{\color{tsinghua} $\blacksquare$}
+\setbeamertemplate{itemize subitem}{\color{tsinghua} $\blacktriangleright$}
+\setbeamertemplate{enumerate items}{\color{tsinghua} $\blacktriangleright$}
 
 % Navigation hide
 \setbeamertemplate{navigation symbols}{}
@@ -41,8 +50,8 @@
   {}
   \else
   \leavevmode%
-  \hbox{%
-    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{palette quaternary}%
+  \hbox{%    
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{palette quaternary}%    
     \insertsectionnavigationhorizontal{\paperwidth}{}{\hfill \hfill}
     \end{beamercolorbox}%
   }
@@ -75,7 +84,7 @@
     \hbox{%
       \begin{beamercolorbox}[wd = 0.2\paperwidth, ht=2.5ex,dp=1.125ex]{author in head/foot} \hspace*{0.5em} \insertshortauthor
       \end{beamercolorbox}%
-      \begin{beamercolorbox}[wd =0.8\paperwidth, ht=2.5ex,dp=1.125ex]{title in head/foot} \hspace*{1.5em} \insertshorttitle \hfill \insertframenumber~\frameofframes~\inserttotalframenumber \hspace*{0.5em}
+      \begin{beamercolorbox}[wd =0.8\paperwidth, ht=2.5ex,dp=1.125ex]{title in head/foot} \hfill \insertshorttitle \hfill \insertframenumber~\frameofframes~\inserttotalframenumber \hspace*{0.5em}
       \end{beamercolorbox}%
       % \begin{beamercolorbox}[wd =0.1\paperwidth, ht=2.5ex,dp=1.125ex]{number in head/foot} \hfill \insertframenumber~\frameofframes~\inserttotalframenumber \hspace*{0.5em}
       % \end{beamercolorbox}%
@@ -87,9 +96,10 @@
 
 
 % Title page
-\defbeamertemplate*{title page}{texsx}[1][]
+\defbeamertemplate*{title page}{texsx}[1][center]
 {%
-    \begin{beamercolorbox}[wd=0.95\paperwidth,leftskip=3cm,sep=8pt,#1]{title page header}
+    \vskip2.5cm
+    \begin{beamercolorbox}[wd=0.95\paperwidth,leftskip=3cm,sep=8pt,#1]{title page header}      
       \huge \inserttitle\par%
     \end{beamercolorbox}%
     \vskip0.75cm%
@@ -100,17 +110,39 @@
      \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{institue}
        \usebeamerfont{author}\insertinstitute%
      \end{beamercolorbox}
-     \vskip0.2cm%
+     \vskip0.4cm%
     \begin{beamercolorbox}[wd=12cm,leftskip=3cm,#1]{date}
       \usebeamerfont{author}\insertdate%
     \end{beamercolorbox}
-    \begin{tikzpicture}[remember picture,overlay]
-      \node[xshift=-2cm,yshift=2cm,opacity=0.3] at (current page.south east) {\includegraphics[width = 0.6\textwidth]{Tsinghua_University_Logo.eps}};
-    \end{tikzpicture}
+    % \begin{tikzpicture}[remember picture,overlay]
+    %   \node[xshift=-2cm,yshift=2cm,opacity=0.3] at (current page.south east) {\includegraphics[width = 0.6\textwidth]{Tsinghua_University_Logo.eps}};
+    % \end{tikzpicture}
     % \begin{figure}[htpb]
     %   \hspace{0.5 \paperwidth} \includegraphics[width=0.15\linewidth]{Tsinghua_University_Logo.eps}
     % \end{figure}
   \vfill
 }\addtocounter{framenumber}{-1}
+
+
+% Theoremlike enviornment
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{theorem begin}
+{%
+  \begin{block}
+  {%
+    \inserttheoremheadfont% uncomment if you want amsthm-like formatting
+    \inserttheoremname
+    \inserttheoremnumber
+    \ifx\inserttheoremaddition\@empty\else\ (\inserttheoremaddition)\fi%
+    \inserttheorempunctuation
+
+  }%
+}
+\setbeamertemplate{theorem end}{\end{block}}
+
+% Table of content
+\setbeamertemplate{section in toc}{%
+  {\color{tsinghua}\inserttocsectionnumber.}~\inserttocsection}
+\setcounter{tocdepth}{1}
 
 \makeatother
